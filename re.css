@@ -7,15 +7,17 @@ body {
     margin: 0;
     background: url('jj.png') no-repeat center center fixed;
     background-size: cover;
-    display: flex;
+    position: relative; /* Fixed double flex issue */
 }
 
-body::before{
+body::before {
     background-color: rgba(0,0,0,0.5);
     height: 100%;
     width: 100%;
     content: "";
     position: absolute;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
@@ -26,20 +28,24 @@ body::before{
     text-align: center;
     width: 300px;
     color: white;
+    padding: 20px;
 }
 
 input, button {
     margin: 10px 0;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
+    max-width: 100%;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 button {
     background-color: #4d2ebb;
     color: white;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 button:hover {
@@ -49,4 +55,33 @@ button:hover {
 #result {
     margin-top: 20px;
     font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 15px;
+    }
+
+    input, button {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    input, button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
 }
